@@ -18,7 +18,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	gcdClient := pb.NewAddServiceClient(conn)
+	gcdClient := pb.NewGCDServiceClient(conn)
 
 	routes := mux.NewRouter()
 	routes.HandleFunc("/", indexHandler).Methods("GET")
