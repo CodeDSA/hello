@@ -24,7 +24,7 @@ type server struct{}
 func main(){
 	lis, err := net.Listen("tcp", ":3000")
 
-	if err != ni{
+	if err != nil{
 	log.Fatalf("Failed to listen: %v", err)
 	}
 
@@ -33,7 +33,7 @@ func main(){
 	reflection.Register(s)
 
 	if err := s.Serve(lis); err != nil {
-	log.Fatlf("Failed to serve: %v", err)
+	log.Fatalf("Failed to serve: %v", err)
 	}
 }
 

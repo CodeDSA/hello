@@ -39,7 +39,7 @@ func main() {
 		defer cancel()
 
 		req := &pb.GCDRequest{A: a, B: b}
-		if resp, err := addClient.Compute(ctx, req); err == nil {
+		if resp, err := gcdClient.Compute(ctx, req); err == nil {
 			msg := fmt.Sprintf("Summation is %d", resp.Result)
 			fmt.Println(msg)
 			json.NewEncoder(w).Encode(msg)
