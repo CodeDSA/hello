@@ -10,7 +10,7 @@ import (
 )
 
 type server struct {
-	proto.UnimplementedGCDServiceServer
+	proto.UnimplementedComputeServiceServer
 }
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
-	proto.RegisterGCDServiceServer(s, &server{})
+	proto.RegisterComputeServiceServer(s, &server{})
 	reflection.Register(s)
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
@@ -27,10 +27,9 @@ func main() {
 
 }
 
-func (s *server) Compute(ctx context.Context, r *proto.GCDRequest) (*proto.GCDResponse, error) {
-	a, b := r.A, r.B
+func (s *server) ComputeCode(ctx context.Context, r *proto.CodeRequest) (*proto.CodeResponse, error) {
 
-	a = a + b
+	a := r.Problem + " " + r.Code
 
-	return &proto.GCDResponse{Result: a}, nil
+	return &proto.CodeResponse{Result: a}, nil
 }

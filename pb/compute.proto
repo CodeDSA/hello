@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package ="github.com/CodeDSA/hello;hello";
+
+message CodeRequest {
+  string problem = 1;
+  string code = 2;
+}
+
+message CodeResponse {
+  string result = 1;
+}
+
+service ComputeService {
+  rpc ComputeCode (CodeRequest) returns (CodeResponse) {}
+}
