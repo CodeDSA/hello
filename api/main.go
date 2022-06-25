@@ -3,8 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	pb "github.com/CodeDSA/hello/pb"
 	"github.com/gorilla/mux"
-	"github.com/CodeDSA/hello/pb"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 	"net/http"
@@ -14,7 +14,7 @@ import (
 
 func main() {
 	//	Connect to Add service
-	conn, err := grpc.Dial("gcd-service:3000", grpc.WithInsecure())
+	conn, err := grpc.Dial("0.0.0.0:9000", grpc.WithInsecure())
 	if err != nil {
 		panic(err)
 	}
